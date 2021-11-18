@@ -153,7 +153,7 @@ export default class Header extends Component {
       }
 
   handlebuttonClick=()=>{
-        document.getElementById("finaldata").style.display="block"
+        document.getElementById("finaldata").style.display="inline"
       }
 
       handlebuttonOut=()=>{
@@ -298,8 +298,8 @@ saveStateToLocalStorage=()=>{
                 </div>
           <button type="submit" className="submitbutton" onClick={this.saveStateToLocalStorage}>Submit</button>
            </div>
-           <div onMouseOut={this.handlebuttonOut} onMouseOver={this.handlebuttonClick} style={{color:"#71C9CE", cursor:"pointer",display:"inline"}}  onChange={this.olddata}> <i class="fas fa-arrow-down"></i> Your file is here <i class="fas fa-arrow-down"></i></div>
-           <div id="finaldata" style={{display:"none", marginTop:"20px"}} >{JSON.stringify(this.olddata())}</div>
+           <div onMouseOut={this.handlebuttonOut} onMouseOver={this.handlebuttonClick} style={{color:"#71C9CE", cursor:"pointer",display:"block",padding:"10px",float:"right"}}  onChange={this.olddata}> <i class="fas fa-arrow-down"></i> Your file is here <i class="fas fa-arrow-down"></i></div>
+           <div id="finaldata" style={{display:"none", marginTop:"40%"}} >{JSON.stringify(this.olddata())}</div>
             </div>
             </form>
         )
