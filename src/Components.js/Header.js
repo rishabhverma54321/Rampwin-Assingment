@@ -83,7 +83,7 @@ export default class Header extends Component {
         get =value.target.files[0]
         if(get.size>10000000){
           this.setState({
-            sizes:<p style={{width:"200%"}} className="alert"><i class="fas fa-times"></i>   Select a file less then 10Mb   <i class="fas fa-times"></i></p>
+           sizes:<p style={{width:"200%"}} className="alert"><i class="fas fa-times"></i>   Select a file less then 10Mb   <i class="fas fa-times"></i></p>
           })
         }else{
         let reader = new FileReader();
@@ -107,7 +107,7 @@ export default class Header extends Component {
         let jsondata = JSON.parse(localStorage.getItem("state"))
           const   data = {
                 "template": {
-                    "name": jsondata.name,
+                    "name": this.state.name,
                     "language": {
                         "policy": "deterministic",
                         "code": "id"
@@ -118,15 +118,15 @@ export default class Header extends Component {
                             "parameters": [
                                 {
                                     "type": "text",
-                                    "text": jsondata.text1
+                                    "text": this.state.text1
                                 },
                                 {
                                     "type": "text",
-                                    "text": jsondata.text2
+                                    "text": this.state.text2
                                 },
                                 {
                                     "type": "text",
-                                    "text": jsondata.text3
+                                    "text": this.state.text3
                                 },
                             ]
                         },
@@ -134,8 +134,8 @@ export default class Header extends Component {
                             "type": "header",
                             "parameters": [
                                 {
-                                    "type": jsondata.format,
-                                    "image": {   "link": jsondata.link.substring(0,100)
+                                    "type": this.state.format,
+                                    "image": {   "link": this.state.link.substring(0,100)
                                   }
                               }
                           ]
@@ -144,16 +144,17 @@ export default class Header extends Component {
               }
               
           }
-    
-          console.log(data)
+
+        console.log("Here is your data -> -> -> ->")
+          console.log( jsondata)
         
-      return(data)
-      
+      return(jsondata)
     
+      
       }
 
   handlebuttonClick=()=>{
-        document.getElementById("finaldata").style.display="inline"
+        document.getElementById("finaldata").style.display="block"
       }
 
       handlebuttonOut=()=>{
@@ -299,7 +300,7 @@ saveStateToLocalStorage=()=>{
           <button type="submit" className="submitbutton" onClick={this.saveStateToLocalStorage}>Submit</button>
            </div>
            <div onMouseOut={this.handlebuttonOut} onMouseOver={this.handlebuttonClick} style={{color:"#71C9CE", cursor:"pointer",display:"block",padding:"10px",float:"right"}}  onChange={this.olddata}> <i class="fas fa-arrow-down"></i> Your file is here <i class="fas fa-arrow-down"></i></div>
-           <div id="finaldata" style={{display:"none", marginTop:"40%"}} >{JSON.stringify(this.olddata())}</div>
+           <div id="finaldata" style={{display:"none", marginTop:"20px",}} >{JSON.stringify(this.olddata())}</div>
             </div>
             </form>
         )
